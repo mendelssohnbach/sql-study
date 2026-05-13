@@ -1,0 +1,40 @@
+{
+  "name": "SQL Study",
+  "dockerComposeFile": "compose.yml",
+  "service": "workspace",
+  "workspaceFolder": "/workspace",
+
+  "forwardPorts": [5432, 8080],
+  "portsAttributes": {
+    "5432": {
+      "label": "PostgreSQL",
+      "onAutoForward": "silent"
+    },
+    "8080": {
+      "label": "pgAdmin",
+      "onAutoForward": "openBrowser"
+    }
+  },
+
+  "features": {
+    "ghcr.io/itsmechlark/features/postgresql:1": {}
+  },
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-ossdata.vscode-pgsql",
+        "inferrinizzard.prettier-sql-vscode"
+      ],
+      "settings": {
+        "json.schemaDownload.enable": true,
+        "[sql]": {
+          "editor.defaultFormatter": "inferrinizzard.prettier-sql-vscode",
+          "editor.formatOnSave": true
+        }
+      }
+    }
+  },
+
+  "remoteUser": "root"
+}
